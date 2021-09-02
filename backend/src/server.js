@@ -1,8 +1,10 @@
 const express = require('express')
 const admin = require('firebase-admin')
 
+const port = process.env.PORT
+const environment = process.env.NODE_ENV
 const app = express()
-const port = 3000
+
 
 admin.initializeApp({credential: admin.credential.applicationDefault()})
 
@@ -75,5 +77,5 @@ app.use('/api/products', (request, response) => {
 })
 
 app.listen(port, () => {
-  console.log(`App server listening on port ${port}`);
+  console.log(`App server listening in mode ${environment} on port ${port}`);
 })
